@@ -15,21 +15,6 @@
 using namespace std;
 
 /*
-class Assistant {
-    // All the Cells in the Sudoku puzzle. It is suggested your assistant
-    // be the owner of these cells.
-    std::vector<std::vector<Cell*>> cells;
-    // The rows, columns, and boxes of your Sudoku puzzle.
-    // The assistant should own these.
-    std::vector<Container*> rows;
-    std::vector<Container*> cols;
-    std::vector<Container*> boxes;
-  public:
-    // Default constructor, should set up a grid and attach all observers
-    // to their subjects
-    Assistant();
-    ~Assistant();
-
     // The input operator reads in characters and assigns values to the cells
     // in the grid starting at the top left cell of the grid and reading left
     // to right, top to bottom. So the first 9 non-whitespace characters read
@@ -48,9 +33,6 @@ class Assistant {
     // are already filled in. As always, you must match the sample executable
     // in behaviour.
     friend std::istream& operator>>(std::istream &, Assistant &);
-    // Outputs the Sudoku puzzle, with formatting consistent with the sample
-    // executable.
-    friend std::ostream& operator<<(std::ostream &, const Assistant &);
 }; */
 
 Assistant::Assistant() {
@@ -119,42 +101,9 @@ istream& operator>>(istream &in, Assistant &a) {
 				int n = c - '0';
 				a.cells[i][j]->setValue(n);
 //			} else {
-//				a.cells[i][j]->setValue(-1);
+//				a.cells[i][j]->notify();
 			}
-//			cerr << a.cells[0][0]->getValue() << ' ';
-			for (int i = 0; i < 9; ++i) {
-				for (int j = 0; j < 9; ++j) {
-					int n = a.cells[i][j]->getValue();
-					if (n == -1) {
-//						cout << '-';
-					} else {
-//						cout << n;
-					}
-					if (j == 2 || j == 5) {
-//						cout << ' ';
-					}
-				}
-//				cout << endl;
-				if (i == 2 || i == 5) {
-//						cout << endl;
-				}
-			}
-			if (i == 8) {
-				int i = 0;
-				int j = 0; 
-				for (int n = (i / 3) * 3; n < (i / 3) * 3 + 3; n++) {
-					for (int m = (j / 3) * 3; m < (j / 3) * 3 + 3; m++) {
-//						cout << a.cells[n][m]->getValue() << ':';
-						for (int i = 0; i < 9; ++i) {
-//							cerr << a.cells[n][m]->canBe[i] << ' ';
-						}
-//						cerr << endl;
-					}   
-				}
-			}
-//			cerr << "------" << endl;
 		}
-//		cerr << endl;
 	}
 	return in;
 }
@@ -177,34 +126,5 @@ ostream& operator<<(ostream &out, const Assistant &a) {
 			cout << endl;
 		}
 	}
-	int i = 0;
-	int j = 0; 
-	for (int n = (i / 3) * 3; n < (i / 3) * 3 + 3; n++) {
-		for (int m = (j / 3) * 3; m < (j / 3) * 3 + 3; m++) {
-//			cout << a.cells[n][m]->getValue() << ':';
-			for (int i = 0; i < 9; ++i) {
-//				cerr << a.cells[n][m]->canBe[i] << ' ';
-			}
-//			cerr << endl;
-		}   
-	}   
-	/*
-	for (int i = 0; i < 9; ++i) {
-		cout << a.cells[0][0]->row->contained[i]->getValue() << ' ';
-	}
-	cout << endl;
-	for (int i = 0; i < 9; ++i) {
-                cout << a.cells[0][0]->col->contained[i]->getValue() << ' ';
-        }  
-	cout << endl;
-	for (int i = 0; i < 9; ++i) {
-                cout << a.cells[0][0]->box->contained[i]->getValue() << ' ';
-        }  
-	cout << endl; */
 	return out;
 }
-
-
-
-
-
