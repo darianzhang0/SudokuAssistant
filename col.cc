@@ -14,10 +14,9 @@ Col::Col(std::vector<Cell*> cells) : Container{cells} {
 	}
 }
 
-Col::~Col() { } // ?
+Col::~Col() { }
 
 void Col::notify() {
-	notifyObservers();
         for (int i = 0; i < 9; ++i) {
                 int sum = 0;
                 for (int j = 0; j < 9; ++j) {
@@ -26,13 +25,12 @@ void Col::notify() {
                 if (sum == 1) {
                         for (int j = 0; j < 9; ++j) {
                                 if (contained[j]->canBe[i] == 1) {
-                                        contained[j]->setValue(i + 1); 
-                                        break;
+					contained[j]->setValue(i + 1);
+					notifyObservers();
+					break;
                                 }   
-                        }   
+                        }  
                 }   
         }   
 }
-
-
 
